@@ -1,11 +1,12 @@
 const express = require('express');
-const router = express.Router();
-
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 const api = express();
 
-const AlltubeController = require('./alltubeController');
+const router = require('./router');
 
-router.get('/search/:phrase', AlltubeController.get);
+api.use(bodyParser.urlencoded({ extended: true }));
+api.use(expressValidator());
 
 api.use(router);
 
